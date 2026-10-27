@@ -1,0 +1,467 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Portafolio de Sebastian Morales, estudiante de Ingeniería de Software en la Universidad Técnica de Ambato.">
+  <meta name="theme-color" content="#0b1120">
+  <title>Sebastian Morales | Software Developer</title>
+
+  <style>
+    :root {
+      --bg: #0b1120;
+      --card: #111b2e;
+      --text: #e8eef8;
+      --muted: #9baac2;
+      --accent: #60a5fa;
+      --border: #263750;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 85px;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1050px, 90%);
+      margin: auto;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      background: rgba(11, 17, 32, 0.94);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      min-height: 68px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .logo {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      flex-wrap: wrap;
+      font-size: 0.92rem;
+    }
+
+    .nav-links a:hover {
+      color: var(--accent);
+    }
+
+    .hero {
+      min-height: 510px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 85px 0;
+    }
+
+    .tag {
+      display: inline-block;
+      color: #93c5fd;
+      background: #142747;
+      border: 1px solid #29466d;
+      border-radius: 50px;
+      padding: 6px 14px;
+      font-size: 0.85rem;
+      margin-bottom: 24px;
+    }
+
+    h1 {
+      font-size: clamp(2.5rem, 7vw, 4.8rem);
+      line-height: 1.15;
+      letter-spacing: -2px;
+      margin-bottom: 20px;
+    }
+
+    h1 span {
+      color: var(--accent);
+    }
+
+    .hero p {
+      max-width: 650px;
+      color: var(--muted);
+      font-size: 1.1rem;
+    }
+
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 30px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 11px 20px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      font-weight: 650;
+      transition: transform 0.2s, background 0.2s;
+    }
+
+    .btn:hover {
+      transform: translateY(-3px);
+    }
+
+    .primary {
+      background: var(--accent);
+      color: #071426;
+      border-color: var(--accent);
+    }
+
+    .section {
+      padding: 65px 0;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .section-intro {
+      color: var(--muted);
+      margin-bottom: 28px;
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 25px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+
+    .card:hover {
+      border-color: var(--accent);
+      transform: translateY(-4px);
+    }
+
+    .card h3 {
+      margin-bottom: 10px;
+      font-size: 1.15rem;
+    }
+
+    .card p {
+      color: var(--muted);
+      font-size: 0.96rem;
+    }
+
+    .tech-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .tech {
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 12px 17px;
+      border-radius: 10px;
+      transition: border-color 0.2s;
+    }
+
+    .tech:hover {
+      border-color: var(--accent);
+    }
+
+    .contact {
+      text-align: center;
+      background: linear-gradient(180deg, var(--bg), #101d32);
+      border-top: 1px solid var(--border);
+    }
+
+    .contact p {
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    footer {
+      padding: 25px 0;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.88rem;
+      border-top: 1px solid var(--border);
+    }
+
+    @media (max-width: 650px) {
+      nav {
+        padding: 15px 0;
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .nav-links {
+        gap: 12px;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        min-height: 440px;
+        padding: 60px 0;
+      }
+
+      h1 {
+        letter-spacing: -1px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *, *::before, *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <nav class="container">
+      <a class="logo" href="#inicio">SebastianM-M</a>
+
+      <div class="nav-links">
+        <a href="#sobre-mi">Sobre mí</a>
+        <a href="#tecnologias">Tecnologías</a>
+        <a href="#proyectos">Proyectos</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero container" id="inicio">
+      <span class="tag">🎓 Software Engineering Student · UTA</span>
+
+      <h1>Hola, soy <span>Sebastian</span></h1>
+
+      <p>
+        Estudiante de Ingeniería de Software en la Universidad
+        Técnica de Ambato. Aprendo construyendo proyectos,
+        resolviendo problemas y mejorando mis habilidades
+        de programación paso a paso.
+      </p>
+
+      <div class="actions">
+        <a class="btn primary" href="#proyectos">
+          Explorar proyectos ↗
+        </a>
+
+        <a class="btn"
+           href="https://github.com/SebastianM-M"
+           target="_blank"
+           rel="noopener noreferrer">
+          Mi GitHub ↗
+        </a>
+      </div>
+    </section>
+
+    <section class="section" id="sobre-mi">
+      <div class="container">
+        <h2 class="section-title">Sobre mí</h2>
+
+        <p class="section-intro">
+          Mi camino en el desarrollo de software.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <h3>🎓 Mi formación</h3>
+            <p>
+              Estudio Ingeniería de Software en la
+              Universidad Técnica de Ambato, Ecuador.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>🧠 Mis intereses</h3>
+            <p>
+              Me interesa la programación, la resolución
+              de problemas, las bases de datos y el diseño
+              de soluciones de software.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>🌱 Mi aprendizaje</h3>
+            <p>
+              Fortalezco mis fundamentos mediante ejercicios,
+              prácticas académicas y proyectos personales.
+            </p>
+          </article>
+
+          <article class="card">
+            <h3>🎯 Mi objetivo</h3>
+            <p>
+              Convertirme en un desarrollador de software
+              capaz de crear aplicaciones útiles,
+              organizadas y bien documentadas.
+            </p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="tecnologias">
+      <div class="container">
+        <h2 class="section-title">Tecnologías y herramientas</h2>
+
+        <p class="section-intro">
+          Herramientas con las que estoy practicando.
+        </p>
+
+        <div class="tech-list">
+          <a class="tech" href="https://dev.java/learn/"
+             target="_blank" rel="noopener noreferrer">☕ Java ↗</a>
+
+          <a class="tech" href="https://docs.python.org/3/"
+             target="_blank" rel="noopener noreferrer">🐍 Python ↗</a>
+
+          <a class="tech"
+             href="https://developer.mozilla.org/en-US/docs/Web/HTML"
+             target="_blank" rel="noopener noreferrer">🌐 HTML ↗</a>
+
+          <a class="tech" href="https://www.w3schools.com/sql/"
+             target="_blank" rel="noopener noreferrer">🗄️ SQL ↗</a>
+
+          <a class="tech" href="https://git-scm.com/doc"
+             target="_blank" rel="noopener noreferrer">🔧 Git ↗</a>
+
+          <a class="tech" href="https://docs.github.com/"
+             target="_blank" rel="noopener noreferrer">🐙 GitHub ↗</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="proyectos">
+      <div class="container">
+        <h2 class="section-title">Mis proyectos</h2>
+
+        <p class="section-intro">
+          Una selección de mis prácticas y trabajos.
+        </p>
+
+        <div class="grid">
+          <article class="card">
+            <h3>🌐 Comandos básicos HTML</h3>
+            <p>
+              Repositorio de ejercicios y prácticas
+              para aprender los fundamentos de HTML.
+            </p>
+
+            <br>
+
+            <a class="btn"
+               href="https://github.com/SebastianM-M/comandos_basicos_b"
+               target="_blank" rel="noopener noreferrer">
+              Ver repositorio ↗
+            </a>
+          </article>
+
+          <article class="card">
+            <h3>💡 Próximos proyectos</h3>
+            <p>
+              Seguiré incorporando aquí aplicaciones,
+              ejercicios de programación y proyectos
+              académicos a medida que los complete.
+            </p>
+
+            <br>
+
+            <a class="btn"
+               href="https://github.com/SebastianM-M?tab=repositories"
+               target="_blank" rel="noopener noreferrer">
+              Ver todos mis repositorios ↗
+            </a>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact" id="contacto">
+      <div class="container">
+        <h2 class="section-title">Conectemos</h2>
+
+        <p>
+          Puedes explorar mis repositorios y seguir
+          mi progreso en el desarrollo de software.
+        </p>
+
+        <div class="actions">
+          <a class="btn primary"
+             href="https://github.com/SebastianM-M"
+             target="_blank" rel="noopener noreferrer">
+            Visitar GitHub ↗
+          </a>
+
+          <a class="btn"
+             href="https://github.com/SebastianM-M?tab=repositories"
+             target="_blank" rel="noopener noreferrer">
+            Mis repositorios
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      © <span id="year">2026</span> Sebastian Morales ·
+      Diseñado con HTML y CSS.
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
