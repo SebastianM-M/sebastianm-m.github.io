@@ -1,324 +1,785 @@
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Portafolio de Sebastian Morales, estudiante de Ingeniería de Software en la Universidad Técnica de Ambato.">
-  <meta name="theme-color" content="#0b1120">
-  <title>Sebastian Morales | Software Developer</title>
+  <meta name="description" content="Portafolio de Sebastián Morales, estudiante de Ingeniería de Software en la Universidad Técnica de Ambato.">
+  <meta name="theme-color" content="#0b0b16">
+  <title>Sebastián Morales | Portafolio</title>
 
   <style>
     :root {
-  --bg: #0b0b16;
-  --card: #17172a;
-  --text: #f4f3ff;
-  --muted: #aaa9c2;
-  --accent: #a78bfa;
-  --cyan: #67e8f9;
-  --pink: #f0abfc;
-  --border: rgba(190, 180, 255, 0.18);
-  --gradient: linear-gradient(115deg, var(--accent), var(--pink), var(--cyan));
-}
+      --fondo: #0b0b16;
+      --tarjeta: #17172a;
+      --texto: #f4f3ff;
+      --suave: #aaa9c2;
+      --morado: #a78bfa;
+      --rosa: #f0abfc;
+      --turquesa: #67e8f9;
+      --borde: rgba(190, 180, 255, .18);
+      --degradado: linear-gradient(115deg, var(--morado), var(--rosa), var(--turquesa));
+      --ancho: 1080px;
+    }
 
-body {
-  background:
-    radial-gradient(ellipse at 15% 8%, rgba(124, 58, 237, .2), transparent 35%),
-    radial-gradient(ellipse at 85% 45%, rgba(34, 211, 238, .1), transparent 32%),
-    var(--bg);
-}
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-header {
-  background: rgba(11, 11, 22, .82);
-  border-bottom: 1px solid var(--border);
-}
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
 
-.logo,
-h1 span {
-  color: var(--accent);
-}
+    body {
+      min-width: 320px;
+      overflow-x: hidden;
+      background:
+        radial-gradient(ellipse at 15% 8%, rgba(124, 58, 237, .20), transparent 35%),
+        radial-gradient(ellipse at 85% 42%, rgba(34, 211, 238, .10), transparent 32%),
+        radial-gradient(ellipse at 48% 100%, rgba(217, 70, 239, .08), transparent 35%),
+        var(--fondo);
+      color: var(--texto);
+      font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+      line-height: 1.7;
+    }
 
-.hero {
-  min-height: 600px;
-  position: relative;
-  overflow: hidden;
-}
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
 
-.tag {
-  color: #ded6ff;
-  background: rgba(167, 139, 250, .1);
-  border-color: rgba(167, 139, 250, .35);
-}
+    a:focus-visible {
+      outline: 2px solid var(--turquesa);
+      outline-offset: 4px;
+    }
 
-.primary {
-  color: #11101d;
-  background: var(--gradient);
-  border: 0;
-}
+    .contenedor {
+      width: min(var(--ancho), calc(100% - 40px));
+      margin-inline: auto;
+    }
 
-.btn,
-.card,
-.tech {
-  border-color: var(--border);
-  background-color: rgba(23, 23, 42, .8);
-  transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
-}
+    /* Navegación */
 
-.btn:hover,
-.card:hover,
-.tech:hover {
-  transform: translateY(-4px);
-  border-color: var(--cyan);
-  box-shadow: 0 10px 30px rgba(103, 232, 249, .1);
-}
+    .barra {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      border-bottom: 1px solid var(--borde);
+      background: rgba(11, 11, 22, .84);
+      backdrop-filter: blur(16px);
+    }
 
-.card {
-  backdrop-filter: blur(10px);
-}
+    nav {
+      min-height: 70px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
 
-.contact {
-  background:
-    radial-gradient(ellipse at 50% 120%, rgba(124, 58, 237, .22), transparent 55%),
-    var(--bg);
-  border-color: var(--border);
-}
+    .logo {
+      font-size: 1.08rem;
+      font-weight: 850;
+      letter-spacing: -.04em;
+      white-space: nowrap;
+    }
 
-@keyframes flotar {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-10px); }
-}
+    .logo span {
+      color: var(--turquesa);
+    }
 
-@keyframes brillo {
-  0%, 100% { opacity: .65; }
-  50% { opacity: 1; }
-}
+    .enlaces {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      color: var(--suave);
+      font-size: .91rem;
+    }
 
-.hero::after {
-  content: "</>";
-  position: absolute;
-  right: 7%;
-  top: 25%;
-  color: rgba(167, 139, 250, .12);
-  font: 800 clamp(6rem, 18vw, 15rem) / 1 ui-monospace, monospace;
-  pointer-events: none;
-  animation: flotar 5s ease-in-out infinite;
-}
+    .enlaces a {
+      transition: color .2s ease;
+    }
 
-.tag {
-  animation: brillo 3s ease-in-out infinite;
-}
+    .enlaces a:hover {
+      color: var(--turquesa);
+    }
 
-@media (prefers-reduced-motion: reduce) {
-  *,
-  *::before,
-  *::after {
-    animation-duration: .01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: .01ms !important;
-  }
-}
+    /* Presentación */
+
+    .hero {
+      min-height: 620px;
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      align-items: center;
+      gap: 30px;
+      padding-block: 75px;
+    }
+
+    .etiqueta {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      padding: 7px 13px;
+      border: 1px solid rgba(167, 139, 250, .35);
+      border-radius: 999px;
+      background: rgba(167, 139, 250, .09);
+      color: #ded6ff;
+      font-size: .83rem;
+    }
+
+    .punto {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--turquesa);
+      box-shadow: 0 0 14px var(--turquesa);
+      animation: pulso 2s ease-in-out infinite;
+    }
+
+    h1 {
+      margin: 23px 0 16px;
+      font-size: clamp(3.3rem, 7vw, 6rem);
+      line-height: .99;
+      letter-spacing: -.075em;
+    }
+
+    .texto-degradado {
+      color: transparent;
+      background: var(--degradado);
+      background-clip: text;
+      -webkit-background-clip: text;
+    }
+
+    .descripcion-hero {
+      max-width: 620px;
+      color: var(--suave);
+      font-size: 1.08rem;
+    }
+
+    .descripcion-hero strong {
+      color: var(--texto);
+    }
+
+    .acciones {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 13px;
+      margin-top: 28px;
+    }
+
+    .boton {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 46px;
+      padding: 10px 18px;
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      font-size: .92rem;
+      font-weight: 700;
+      transition: transform .2s ease, border-color .2s ease, box-shadow .2s ease;
+    }
+
+    .boton:hover {
+      transform: translateY(-3px);
+      border-color: var(--turquesa);
+      box-shadow: 0 8px 28px rgba(103, 232, 249, .12);
+    }
+
+    .boton-principal {
+      border: 0;
+      background: var(--degradado);
+      color: #11101d;
+    }
+
+    /* Ilustración animada */
+
+    .ilustracion {
+      min-height: 390px;
+      display: grid;
+      place-items: center;
+      position: relative;
+    }
+
+    .orbita {
+      width: min(340px, 72vw);
+      aspect-ratio: 1;
+      display: grid;
+      place-items: center;
+      position: relative;
+      border: 1px solid rgba(167, 139, 250, .30);
+      border-radius: 50%;
+      animation: girar 28s linear infinite;
+    }
+
+    .orbita::before,
+    .orbita::after {
+      content: "";
+      position: absolute;
+      inset: 28px;
+      border: 1px solid rgba(103, 232, 249, .20);
+      border-radius: 50%;
+    }
+
+    .orbita::after {
+      inset: 60px;
+      border-color: rgba(240, 171, 252, .23);
+    }
+
+    .orbita-punto {
+      position: absolute;
+      top: 15%;
+      left: 17%;
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background: var(--turquesa);
+      box-shadow: 0 0 20px var(--turquesa);
+    }
+
+    .ventana-codigo {
+      position: absolute;
+      width: min(310px, 78vw);
+      padding: 21px;
+      border: 1px solid rgba(190, 180, 255, .28);
+      border-radius: 18px;
+      background: rgba(20, 20, 37, .94);
+      box-shadow: 0 25px 80px rgba(0, 0, 0, .4);
+      animation: flotar 5s ease-in-out infinite;
+    }
+
+    .controles {
+      display: flex;
+      gap: 6px;
+      padding-bottom: 15px;
+      border-bottom: 1px solid var(--borde);
+    }
+
+    .controles i {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      background: #fb7185;
+    }
+
+    .controles i:nth-child(2) {
+      background: #fbbf24;
+    }
+
+    .controles i:nth-child(3) {
+      background: #34d399;
+    }
+
+    .ventana-codigo pre {
+      margin-top: 15px;
+      color: #d1cde8;
+      font: .88rem/1.9 ui-monospace, Consolas, monospace;
+      white-space: pre-wrap;
+    }
+
+    .codigo-morado { color: var(--rosa); }
+    .codigo-cyan { color: var(--turquesa); }
+    .codigo-verde { color: #a7f3d0; }
+
+    .burbuja {
+      position: absolute;
+      padding: 9px 13px;
+      border: 1px solid var(--borde);
+      border-radius: 12px;
+      background: var(--tarjeta);
+      animation: flotar 4s ease-in-out infinite;
+    }
+
+    .burbuja-java {
+      top: 10%;
+      right: 0;
+    }
+
+    .burbuja-python {
+      bottom: 12%;
+      left: 0;
+      animation-delay: -1.2s;
+    }
+
+    /* Secciones */
+
+    .seccion {
+      padding-block: 68px;
+    }
+
+    .encabezado-seccion {
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 27px;
+    }
+
+    .sobretitulo {
+      color: var(--turquesa);
+      font-size: .74rem;
+      font-weight: 800;
+      letter-spacing: .17em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin-top: 5px;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      line-height: 1.15;
+      letter-spacing: -.055em;
+    }
+
+    .introduccion-seccion {
+      max-width: 530px;
+      margin-top: 8px;
+      color: var(--suave);
+    }
+
+    .rejilla {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .tarjeta {
+      padding: 24px;
+      border: 1px solid var(--borde);
+      border-radius: 18px;
+      background: linear-gradient(145deg, rgba(27, 27, 48, .9), rgba(17, 17, 31, .85));
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+    }
+
+    .tarjeta:hover {
+      transform: translateY(-5px);
+      border-color: rgba(167, 139, 250, .65);
+      box-shadow: 0 14px 38px rgba(0, 0, 0, .2);
+    }
+
+    .icono-tarjeta {
+      width: 43px;
+      height: 43px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 14px;
+      border: 1px solid var(--borde);
+      border-radius: 13px;
+      background: rgba(167, 139, 250, .1);
+      font-size: 1.2rem;
+    }
+
+    .tarjeta h3 {
+      margin-bottom: 8px;
+      font-size: 1.08rem;
+    }
+
+    .tarjeta p {
+      color: var(--suave);
+      font-size: .95rem;
+    }
+
+    /* Tecnologías */
+
+    .tecnologias {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 11px;
+    }
+
+    .tecnologia {
+      min-width: 135px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 15px;
+      border: 1px solid var(--borde);
+      border-radius: 13px;
+      background: rgba(23, 23, 42, .82);
+      transition: transform .2s ease, border-color .2s ease;
+    }
+
+    .tecnologia:hover {
+      transform: translateY(-3px);
+      border-color: var(--turquesa);
+    }
+
+    .simbolo {
+      color: var(--turquesa);
+      font-weight: 800;
+    }
+
+    /* Proyectos */
+
+    .proyecto {
+      min-height: 240px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .categoria {
+      margin-bottom: 12px;
+      color: var(--turquesa);
+      font-size: .75rem;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .proyecto .boton {
+      align-self: flex-start;
+      margin-top: auto;
+    }
+
+    /* Ruta */
+
+    .ruta {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 17px;
+    }
+
+    .ruta ul {
+      margin-top: 12px;
+      list-style: none;
+      color: var(--suave);
+      font-size: .91rem;
+    }
+
+    .ruta li {
+      padding: 7px 0;
+      border-top: 1px solid rgba(190, 180, 255, .12);
+    }
+
+    .completado {
+      color: var(--turquesa);
+    }
+
+    /* Contacto y pie */
+
+    .contacto {
+      margin-block: 30px 50px;
+      padding: 65px 22px;
+      border: 1px solid var(--borde);
+      border-radius: 25px;
+      background:
+        radial-gradient(ellipse at 50% 120%, rgba(124, 58, 237, .23), transparent 55%),
+        rgba(20, 20, 37, .8);
+      text-align: center;
+    }
+
+    .contacto p {
+      max-width: 570px;
+      margin: 12px auto 0;
+      color: var(--suave);
+    }
+
+    .contacto .acciones {
+      justify-content: center;
+    }
+
+    footer {
+      padding: 24px 0 35px;
+      color: var(--suave);
+      font-size: .88rem;
+    }
+
+    .pie {
+      display: flex;
+      justify-content: space-between;
+      gap: 15px;
+      padding-top: 20px;
+      border-top: 1px solid var(--borde);
+    }
+
+    .volver {
+      color: var(--turquesa);
+    }
+
+    /* Movimiento */
+
+    @keyframes flotar {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    @keyframes girar {
+      to { transform: rotate(360deg); }
+    }
+
+    @keyframes pulso {
+      50% {
+        opacity: .5;
+        box-shadow: 0 0 5px var(--turquesa);
+      }
+    }
+
+    /* Adaptación a pantallas pequeñas */
+
+    @media (max-width: 760px) {
+      .hero {
+        min-height: auto;
+        grid-template-columns: 1fr;
+        gap: 15px;
+        padding-block: 65px 25px;
+        text-align: center;
+      }
+
+      .descripcion-hero {
+        margin-inline: auto;
+      }
+
+      .hero .acciones {
+        justify-content: center;
+      }
+
+      .ilustracion {
+        min-height: 340px;
+      }
+
+      .ruta {
+        grid-template-columns: 1fr;
+      }
+
+      .seccion {
+        padding-block: 55px;
+      }
+    }
+
+    @media (max-width: 560px) {
+      .contenedor {
+        width: calc(100% - 30px);
+      }
+
+      nav {
+        align-items: flex-start;
+        flex-direction: column;
+        justify-content: center;
+        gap: 2px;
+        padding-block: 9px;
+      }
+
+      .enlaces {
+        width: 100%;
+        gap: 17px;
+        overflow-x: auto;
+        padding: 4px 0;
+        white-space: nowrap;
+        font-size: .82rem;
+      }
+
+      .rejilla {
+        grid-template-columns: 1fr;
+      }
+
+      h1 {
+        font-size: clamp(3.1rem, 16vw, 4.4rem);
+      }
+
+      .encabezado-seccion {
+        display: block;
+      }
+
+      .tecnologia {
+        flex: 1 1 42%;
+        min-width: 0;
+      }
+
+      .pie {
+        flex-direction: column;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: .01ms !important;
+      }
+    }
   </style>
 </head>
 
 <body>
-  <header>
-    <nav class="container">
-      <a class="logo" href="#inicio">SebastianM-M</a>
-
-      <div class="nav-links">
+  <header class="barra">
+    <nav class="contenedor" aria-label="Navegación principal">
+      <a class="logo" href="#inicio"><span>&lt;</span> SebastianM-M <span>/&gt;</span></a>
+      <div class="enlaces">
         <a href="#sobre-mi">Sobre mí</a>
         <a href="#tecnologias">Tecnologías</a>
         <a href="#proyectos">Proyectos</a>
+        <a href="#ruta">Mi ruta</a>
         <a href="#contacto">Contacto</a>
       </div>
     </nav>
   </header>
 
   <main>
-    <section class="hero container" id="inicio">
-      <span class="tag">🎓 Software Engineering Student · UTA</span>
+    <section class="hero contenedor" id="inicio">
+      <div>
+        <span class="etiqueta"><i class="punto"></i> Estudiante de Ingeniería de Software · UTA</span>
+        <h1>Hola, soy<br><span class="texto-degradado">Sebastián.</span></h1>
+        <p class="descripcion-hero">
+          Estoy aprendiendo a crear <strong>software útil</strong>,
+          una idea y un proyecto a la vez. Estudio en la Universidad
+          Técnica de Ambato y construyo mis bases en programación,
+          desarrollo web y bases de datos.
+        </p>
+        <div class="acciones">
+          <a class="boton boton-principal" href="#proyectos">Explorar proyectos ↗</a>
+          <a class="boton" href="https://github.com/SebastianM-M" target="_blank" rel="noopener noreferrer">Mi GitHub ↗</a>
+        </div>
+      </div>
 
-      <h1>Hola, soy <span>Sebastian</span></h1>
-
-      <p>
-        Estudiante de Ingeniería de Software en la Universidad
-        Técnica de Ambato. Aprendo construyendo proyectos,
-        resolviendo problemas y mejorando mis habilidades
-        de programación paso a paso.
-      </p>
-
-      <div class="actions">
-        <a class="btn primary" href="#proyectos">
-          Explorar proyectos ↗
-        </a>
-
-        <a class="btn"
-           href="https://github.com/SebastianM-M"
-           target="_blank"
-           rel="noopener noreferrer">
-          Mi GitHub ↗
-        </a>
+      <div class="ilustracion" aria-label="Ilustración animada de código">
+        <div class="orbita"><i class="orbita-punto"></i></div>
+        <span class="burbuja burbuja-java">☕ Java</span>
+        <span class="burbuja burbuja-python">🐍 Python</span>
+        <div class="ventana-codigo">
+          <div class="controles"><i></i><i></i><i></i></div>
+          <pre><span class="codigo-morado">const</span> developer = {
+  nombre: <span class="codigo-verde">"Sebastián"</span>,
+  aprendiendo: <span class="codigo-cyan">true</span>,
+  enfoque: <span class="codigo-verde">"crear y mejorar"</span>
+};</pre>
+        </div>
       </div>
     </section>
 
-    <section class="section" id="sobre-mi">
-      <div class="container">
-        <h2 class="section-title">Sobre mí</h2>
+    <section class="seccion" id="sobre-mi">
+      <div class="contenedor">
+        <div class="encabezado-seccion">
+          <div><span class="sobretitulo">Quién soy</span><h2>Sobre mí</h2></div>
+          <p class="introduccion-seccion">Mi camino en el desarrollo empieza con curiosidad, práctica y ganas de seguir aprendiendo.</p>
+        </div>
+        <div class="rejilla">
+          <article class="tarjeta"><div class="icono-tarjeta">🎓</div><h3>Mi formación</h3><p>Estudio Ingeniería de Software en la Universidad Técnica de Ambato, Ecuador.</p></article>
+          <article class="tarjeta"><div class="icono-tarjeta">🧠</div><h3>Lo que me interesa</h3><p>La programación, resolver problemas, las bases de datos y diseñar soluciones de software.</p></article>
+          <article class="tarjeta"><div class="icono-tarjeta">🌱</div><h3>Cómo aprendo</h3><p>Refuerzo mis fundamentos con ejercicios, prácticas académicas y proyectos personales.</p></article>
+          <article class="tarjeta"><div class="icono-tarjeta">🎯</div><h3>Hacia dónde voy</h3><p>Quiero crecer como desarrollador y crear aplicaciones útiles, claras y bien organizadas.</p></article>
+        </div>
+      </div>
+    </section>
 
-        <p class="section-intro">
-          Mi camino en el desarrollo de software.
-        </p>
+    <section class="seccion" id="tecnologias">
+      <div class="contenedor">
+        <div class="encabezado-seccion">
+          <div><span class="sobretitulo">Mi caja de herramientas</span><h2>Tecnologías</h2></div>
+          <p class="introduccion-seccion">Herramientas que estoy usando y aprendiendo en mis prácticas y proyectos.</p>
+        </div>
+        <div class="tecnologias">
+          <a class="tecnologia" href="https://dev.java/learn/" target="_blank" rel="noopener noreferrer"><span class="simbolo">☕</span> Java ↗</a>
+          <a class="tecnologia" href="https://docs.python.org/3/" target="_blank" rel="noopener noreferrer"><span class="simbolo">🐍</span> Python ↗</a>
+          <a class="tecnologia" href="https://developer.mozilla.org/es/docs/Web/HTML" target="_blank" rel="noopener noreferrer"><span class="simbolo">⌘</span> HTML ↗</a>
+          <a class="tecnologia" href="https://www.w3schools.com/sql/" target="_blank" rel="noopener noreferrer"><span class="simbolo">▤</span> SQL ↗</a>
+          <a class="tecnologia" href="https://git-scm.com/doc" target="_blank" rel="noopener noreferrer"><span class="simbolo">⑂</span> Git ↗</a>
+          <a class="tecnologia" href="https://docs.github.com/" target="_blank" rel="noopener noreferrer"><span class="simbolo">◉</span> GitHub ↗</a>
+        </div>
+      </div>
+    </section>
 
-        <div class="grid">
-          <article class="card">
-            <h3>🎓 Mi formación</h3>
-            <p>
-              Estudio Ingeniería de Software en la
-              Universidad Técnica de Ambato, Ecuador.
-            </p>
+    <section class="seccion" id="proyectos">
+      <div class="contenedor">
+        <div class="encabezado-seccion">
+          <div><span class="sobretitulo">Cosas que voy creando</span><h2>Mis proyectos</h2></div>
+          <p class="introduccion-seccion">Una muestra de mis prácticas. Iré agregando aquí los proyectos que complete.</p>
+        </div>
+        <div class="rejilla">
+          <article class="tarjeta proyecto">
+            <span class="categoria">HTML · Práctica</span>
+            <h3>Comandos básicos HTML</h3>
+            <p>Repositorio de ejercicios para aprender y reforzar los fundamentos de HTML.</p>
+            <a class="boton" href="https://github.com/SebastianM-M/comandos_basicos_b" target="_blank" rel="noopener noreferrer">Ver repositorio ↗</a>
           </article>
-
-          <article class="card">
-            <h3>🧠 Mis intereses</h3>
-            <p>
-              Me interesa la programación, la resolución
-              de problemas, las bases de datos y el diseño
-              de soluciones de software.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>🌱 Mi aprendizaje</h3>
-            <p>
-              Fortalezco mis fundamentos mediante ejercicios,
-              prácticas académicas y proyectos personales.
-            </p>
-          </article>
-
-          <article class="card">
-            <h3>🎯 Mi objetivo</h3>
-            <p>
-              Convertirme en un desarrollador de software
-              capaz de crear aplicaciones útiles,
-              organizadas y bien documentadas.
-            </p>
+          <article class="tarjeta proyecto">
+            <span class="categoria">En construcción</span>
+            <h3>Próximos proyectos</h3>
+            <p>Ejercicios, trabajos académicos y nuevas ideas mientras avanzo en mi aprendizaje.</p>
+            <a class="boton" href="https://github.com/SebastianM-M?tab=repositories" target="_blank" rel="noopener noreferrer">Ver mis repositorios ↗</a>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section" id="tecnologias">
-      <div class="container">
-        <h2 class="section-title">Tecnologías y herramientas</h2>
-
-        <p class="section-intro">
-          Herramientas con las que estoy practicando.
-        </p>
-
-        <div class="tech-list">
-          <a class="tech" href="https://dev.java/learn/"
-             target="_blank" rel="noopener noreferrer">☕ Java ↗</a>
-
-          <a class="tech" href="https://docs.python.org/3/"
-             target="_blank" rel="noopener noreferrer">🐍 Python ↗</a>
-
-          <a class="tech"
-             href="https://developer.mozilla.org/en-US/docs/Web/HTML"
-             target="_blank" rel="noopener noreferrer">🌐 HTML ↗</a>
-
-          <a class="tech" href="https://www.w3schools.com/sql/"
-             target="_blank" rel="noopener noreferrer">🗄️ SQL ↗</a>
-
-          <a class="tech" href="https://git-scm.com/doc"
-             target="_blank" rel="noopener noreferrer">🔧 Git ↗</a>
-
-          <a class="tech" href="https://docs.github.com/"
-             target="_blank" rel="noopener noreferrer">🐙 GitHub ↗</a>
+    <section class="seccion" id="ruta">
+      <div class="contenedor">
+        <div class="encabezado-seccion">
+          <div><span class="sobretitulo">Paso a paso</span><h2>Mi ruta de aprendizaje</h2></div>
+          <p class="introduccion-seccion">Objetivos para fortalecer mis conocimientos y crear proyectos cada vez más completos.</p>
         </div>
-      </div>
-    </section>
-
-    <section class="section" id="proyectos">
-      <div class="container">
-        <h2 class="section-title">Mis proyectos</h2>
-
-        <p class="section-intro">
-          Una selección de mis prácticas y trabajos.
-        </p>
-
-        <div class="grid">
-          <article class="card">
-            <h3>🌐 Comandos básicos HTML</h3>
-            <p>
-              Repositorio de ejercicios y prácticas
-              para aprender los fundamentos de HTML.
-            </p>
-
-            <br>
-
-            <a class="btn"
-               href="https://github.com/SebastianM-M/comandos_basicos_b"
-               target="_blank" rel="noopener noreferrer">
-              Ver repositorio ↗
-            </a>
+        <div class="ruta">
+          <article class="tarjeta">
+            <div class="icono-tarjeta">🌱</div><h3>Programación</h3>
+            <ul>
+              <li><span class="completado">✓</span> Crear el README de mi perfil</li>
+              <li>Reforzar mis fundamentos de Java</li>
+              <li>Practicar programación orientada a objetos</li>
+              <li>Mejorar mis habilidades con Python</li>
+              <li>Construir proyectos útiles</li>
+            </ul>
           </article>
-
-          <article class="card">
-            <h3>💡 Próximos proyectos</h3>
-            <p>
-              Seguiré incorporando aquí aplicaciones,
-              ejercicios de programación y proyectos
-              académicos a medida que los complete.
-            </p>
-
-            <br>
-
-            <a class="btn"
-               href="https://github.com/SebastianM-M?tab=repositories"
-               target="_blank" rel="noopener noreferrer">
-              Ver todos mis repositorios ↗
-            </a>
+          <article class="tarjeta">
+            <div class="icono-tarjeta">🗄️</div><h3>Ingeniería y datos</h3>
+            <ul>
+              <li>Practicar consultas SQL</li>
+              <li>Aprender diseño de bases de datos</li>
+              <li>Estudiar algoritmos y estructuras de datos</li>
+              <li>Mejorar el modelado de software</li>
+              <li>Crear aplicaciones conectadas a datos</li>
+            </ul>
+          </article>
+          <article class="tarjeta">
+            <div class="icono-tarjeta">🌐</div><h3>Web y herramientas</h3>
+            <ul>
+              <li><span class="completado">✓</span> Practicar los fundamentos de HTML</li>
+              <li>Aprender CSS y JavaScript</li>
+              <li>Mejorar el uso de Git</li>
+              <li>Practicar la colaboración en GitHub</li>
+            </ul>
           </article>
         </div>
       </div>
     </section>
 
-    <section class="section contact" id="contacto">
-      <div class="container">
-        <h2 class="section-title">Conectemos</h2>
-
-        <p>
-          Puedes explorar mis repositorios y seguir
-          mi progreso en el desarrollo de software.
-        </p>
-
-        <div class="actions">
-          <a class="btn primary"
-             href="https://github.com/SebastianM-M"
-             target="_blank" rel="noopener noreferrer">
-            Visitar GitHub ↗
-          </a>
-
-          <a class="btn"
-             href="https://github.com/SebastianM-M?tab=repositories"
-             target="_blank" rel="noopener noreferrer">
-            Mis repositorios
-          </a>
+    <section class="seccion">
+      <div class="contenedor">
+        <div class="encabezado-seccion">
+          <div><span class="sobretitulo">Lo que me impulsa</span><h2>Mis objetivos</h2></div>
         </div>
+        <div class="rejilla">
+          <article class="tarjeta"><h3>📚 Aprender con constancia</h3><p>Seguir practicando y fortalecer mis fundamentos de programación.</p></article>
+          <article class="tarjeta"><h3>🧩 Pensar mejor</h3><p>Resolver problemas y desarrollar mi lógica paso a paso.</p></article>
+          <article class="tarjeta"><h3>🏗️ Crear y compartir</h3><p>Construir proyectos completos, claros y bien documentados.</p></article>
+          <article class="tarjeta"><h3>🤝 Crecer en equipo</h3><p>Aprender a colaborar y crear software que resuelva problemas reales.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="contenedor contacto" id="contacto">
+      <span class="sobretitulo">Hablemos de código</span>
+      <h2>Sigamos en contacto</h2>
+      <p>Puedes explorar mis repositorios y acompañar mi progreso mientras sigo aprendiendo y construyendo proyectos.</p>
+      <div class="acciones">
+        <a class="boton boton-principal" href="https://github.com/SebastianM-M" target="_blank" rel="noopener noreferrer">Visitar mi GitHub ↗</a>
+        <a class="boton" href="https://github.com/SebastianM-M?tab=repositories" target="_blank" rel="noopener noreferrer">Ver repositorios</a>
       </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      © <span id="year">2026</span> Sebastian Morales ·
-      Diseñado con HTML y CSS.
+    <div class="contenedor pie">
+      <span>© <span id="year">2026</span> Sebastián Morales · Hecho con HTML, CSS y curiosidad.</span>
+      <a class="volver" href="#inicio">Volver arriba ↑</a>
     </div>
   </footer>
 
   <script>
-    document.getElementById("year").textContent =
-      new Date().getFullYear();
+    document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
 </html>
